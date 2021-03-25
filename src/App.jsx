@@ -1,7 +1,8 @@
+import loadable from '@loadable/component'
 import { useState } from 'react'
 
-// import Counter from './Counter'
-// import Todo from './Todo'
+const Counter = loadable(() => import('./Counter'))
+const Todo = loadable(() => import('./Todo'))
 
 const App = () => {
   const [currentApp, setCurrentApp] = useState('none')
@@ -14,8 +15,8 @@ const App = () => {
         <option value='counter'>counter</option>
         <option value='todo'>todo</option>
       </select>
-      {/* {currentApp === 'counter' && <Counter />} */}
-      {/* {currentApp === 'todo' && <Todo />} */}
+      {currentApp === 'counter' && <Counter />}
+      {currentApp === 'todo' && <Todo />}
     </>
   )
 }
