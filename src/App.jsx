@@ -1,8 +1,8 @@
 import loadable from '@loadable/component'
 import { useState } from 'react'
 
-const Counter = loadable(() => import('./Counter'))
-const Todo = loadable(() => import('./Todo'))
+const Counter = loadable(() => import(/* webpackPrefetch: true */ './Counter'))
+const Todo = loadable(() => import(/* webpackPrefetch: true */ './Todo'))
 
 const App = () => {
   const [currentApp, setCurrentApp] = useState('none')
