@@ -8,11 +8,13 @@ module.exports = {
   },
   output: {
     filename: '[name].[contenthash].bundle.js',
-    path: path.resolve(__dirname, 'public/dist')
+    path: path.resolve(__dirname, 'public'),
+    clean: true
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'My App'
+      title: 'My App',
+      template: 'index.html'
     })
   ],
   resolve: {
