@@ -18,5 +18,8 @@ module.exports = {
       test: /\.(js|jsx)$/,
       exclude: /node_modules/
     }]
+  },
+  experiments: {
+    topLevelAwait: true
   }
 }
