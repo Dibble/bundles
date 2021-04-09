@@ -2,22 +2,15 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: {
-    index: './src/index.js',
-    other: './src/other.js'
+    index: './src/index.js'
   },
   output: {
     filename: '[name].[contenthash].bundle.js',
-    path: path.resolve(__dirname, 'public'),
+    path: path.resolve(__dirname, 'dist'),
     clean: true
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: 'My App',
-      template: 'index.html'
-    })
-  ],
   resolve: {
     extensions: ['.js', '.jsx']
   },
@@ -32,16 +25,20 @@ module.exports = {
     topLevelAwait: true
   },
   optimization: {
-    moduleIds: 'deterministic',
-    runtimeChunk: 'single',
     splitChunks: {
       cacheGroups: {
-        vendor: {
+        vendors: {
           test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all'
+          chunks: 'all',
+          name: 'vendors'
         }
       }
     }
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      name: 'My App',
+      template: 'index.html'
+    })
+  ]
 }
